@@ -1,0 +1,13 @@
+name: parse-server
+summary: Example server using Express and the parse-server module.
+maintainer: Jay R. Wren <jrwren@xmtp.net>
+description: |
+    See https://github.com/jrwren/parse-server-example
+    Example project using the parse-server module on Express.
+tags: ['server']
+requires:
+    database:
+        interface: mongodb
+provides:
+    website:
+        interface: http

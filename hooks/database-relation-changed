@@ -1,0 +1,30 @@
+#!/usr/bin/python3
+
+import os
+import subprocess
+
+
+def main():
+    rel = subprocess.check_output('relation-get').decode("utf-8")
+    mongodb = {}
+    for line in rel.split("\n"):
+        if line:
+            f = line.split(':', 1)
+            mongodb[f[0]] = f[1]
+    with open('index.js.orig') as src:
+        with open('index.js', 'w') as dst:
+            for line in src:
+                line = line.replace('mongodb://localhost:27017/dev',
+                                    'mongodb://{}:{}/parse'.format(
+                                       mongodb['hostname'],
+                                       mongodb['port']))
+                dst.write(line)
+
+    if os.fork():
+        os.execlp('npm', 'npm', 'start')
+
+    subprocess.call('open-port', "1337")
+
+
+if __name__ == '__main__':
+    main()

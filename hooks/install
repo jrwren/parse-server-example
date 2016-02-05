@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -ex
+
+# no way am I gonna curl like it says here:
+# https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+
+# these two commands are shorter and safer (no curl to shell)
+curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+add-apt-repository 'deb https://deb.nodesource.com/node_5.x trusty main'
+
+apt-get update
+apt-get install -y nodejs
+
+npm install
+
+cp index.js index.js.orig
