@@ -9,7 +9,7 @@ from charms.reactive import set_state, remove_state
 from nodejs import npm, node_dist_dir
 
 
-@when('nodejs.available', 'mongodb.available')
+@when('nodejs.available', 'mongodb.database.available')
 def setup_parse_server(mongodb):
     print(mongodb)
     shutil.copy('index.js', 'index.js.orig')
@@ -24,6 +24,6 @@ def setup_parse_server(mongodb):
     npm('start')
 
 
-@when_not('mongodb.available')
+@when_not('mongodb.database.available')
 def nomongo_stat():
     status_set("blocked", "a mongodb relation is required")
