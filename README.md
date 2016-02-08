@@ -4,6 +4,13 @@ Example project using the parse-server module on Express.
 
 Read the full server guide here: https://parse.com/docs/server/guide
 
+### For Juju Development
+
+* juju deploy cs:~evarlast/trusty/parse-server-0
+* juju deploy mongodb
+* juju add-relation parse-server mongodb
+* juju expose parse-server
+
 ### For Local Development
 
 * Make sure you have at least Node 4.1. `node --version`
