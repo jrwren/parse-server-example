@@ -4,6 +4,7 @@ maintainer: Jay R. Wren <jrwren@xmtp.net>
 description: |
     See https://github.com/jrwren/parse-server-example
     Example project using the parse-server module on Express.
+series: ['xenial', 'yakkety']
 tags: ['server']
 requires:
     database:
